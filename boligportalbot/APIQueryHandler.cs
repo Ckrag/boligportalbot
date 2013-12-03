@@ -118,7 +118,7 @@ namespace boligportalbot
             //// CAP AT 15 ////
             //insted of '(int)jdata["properties"].Count()' we use 15 as a magic number, since we only are interested in the first few, and any new offers that may appear
 
-            //FUCK DAT WE NEED TO CROSSCHECK EVERYTHING; YEEEEEEEHAW!
+            //FUCK DAT WE NEED TO CROSSCHECK EVERYTHING; YEEEEEEHAW!
 
             //IF NOTHING WAS FOUND WITH THE QUERY: jqt_altList : true
             //OTHERWISE: jqt_altList : false
