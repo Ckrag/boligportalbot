@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Contracts;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,8 +20,13 @@ namespace boligportalbot
 
         public CriteriaForm(MainForm _parrentForm)
         {
+            Contract.Requires(_parrentForm.GetType() == typeof(MainForm));
+            
             InitializeComponent();
             Data_Request user_criteria = new Data_Request();
+
+            Contract.Requires(user_criteria.regiondatalist.GetType() == typeof(List<CountryRegionAmt>));
+
             regiondatalist = user_criteria.regiondatalist;
             amt_selection_cmb.DataSource = regiondatalist;
             amt_selection_cmb.DisplayMember = "name";
@@ -29,6 +35,7 @@ namespace boligportalbot
 
             //set displayed settings equal to currently selected settings
             UpdateDisplayedSettings();
+
         }
 
         public void UpdateDisplayedSettings()
@@ -123,6 +130,7 @@ namespace boligportalbot
 
             #region price/size
             //pricing (min)
+
             if (min_price_txt.Text == "") { parrentForm.Query_Properties.huslejeMin = "0"; }
             else {
                 if (Regex.IsMatch(min_price_txt.Text, @"[0-9]{1,6}"))
@@ -134,7 +142,7 @@ namespace boligportalbot
                     parrentForm.Query_Properties.huslejeMin = "0";
                 }
             };
-            //pricing (min)
+            //pricing (max)
             if (max_price_txt.Text == "") { parrentForm.Query_Properties.huslejeMax = "0"; }
             else
             {
@@ -160,7 +168,7 @@ namespace boligportalbot
                     parrentForm.Query_Properties.stoerrelseMin = "0";
                 }
             };
-            //size (min)
+            //size (max)
             if (max_size_txt.Text == "") { parrentForm.Query_Properties.stoerrelseMax = "0"; }
             else
             {
