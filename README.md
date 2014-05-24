@@ -1,4 +1,4 @@
 Boligportalbot
 ==============
 
-A bot for scanning a website
+A bot for automated scanning of boligportal.dk
